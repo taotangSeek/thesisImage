@@ -7,7 +7,7 @@ import matplotlib as mpl
     数据输入
     格式类似
 '''
-# 数据
+# 数据输入
 data = {'Meet':
             {
                 'RTP ML': [-0.11, -0.05, 0.05, 0.15],
@@ -31,7 +31,7 @@ data = {'Meet':
             },
         }
 
-y_label= 'Bitrate Relative Error'
+y_label = 'Bitrate Relative Error'
 
 
 
