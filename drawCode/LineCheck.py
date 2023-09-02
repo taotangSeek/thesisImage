@@ -6,7 +6,7 @@ import matplotlib as mpl
 '''
 
 # 数据输入
-x = np.arange(1, 21)  # 生成1到20的整数数组
+x = np.arange(1, 40)  # 生成1到20的整数数组
 y1 = np.random.normal(0, 0.5, len(x))
 y2 = np.random.normal(0, 0.5, len(x))
 y3 = np.random.normal(0, 0.5, len(x))
@@ -22,10 +22,6 @@ label2 = 'testZLabel2'
 label3 = 'label3'
 label4 = 'label4'
 
-'''
-    线条增加区
-'''
-
 
 
 '''
@@ -36,11 +32,11 @@ label4 = 'label4'
 mpl.rcParams['font.family'] = 'Times New Roman'
 
 # 创建图形和坐标轴
-fig, ax = plt.subplots(figsize=(8, 5))
+fig, ax = plt.subplots(figsize=(10, 5))
 # 绘制折线图
 line1, = ax.plot(x, y1, color='goldenrod', linewidth=3, marker='o', markersize=6, label=label1)
 line2, = ax.plot(x, y2, color='seagreen', linewidth=3, marker='s', markersize=6, label=label2)
-# line3, = ax.plot(x, y3, color='indigo', linewidth=3, marker='D', markersize=6, label=label3)
+line3, = ax.plot(x, y3, color='indigo', linewidth=3, marker='D', markersize=6, label=label3)
 # line4, = ax.plot(x, y4, color='seagreen', linewidth=3, marker='^', markersize=6, label=label4)
 
 # 设置标题和标签
@@ -52,6 +48,7 @@ ax.set_ylabel(ylabel=y_label, fontsize=15)
 ax.tick_params(axis='both', labelsize=15)
 
 # 设定y轴 指定的上下界
+plt.ylim(-2.5, 1.4)
 
 # 添加网格线
 ax.grid(True, linestyle='--', linewidth=0.5, alpha=0.7)

@@ -34,7 +34,6 @@ data = {'Meet':
 y_label = 'Bitrate Relative Error'
 
 
-
 '''
     代码区域
     有需要自行修改
@@ -85,10 +84,10 @@ legend = fig.legend(
     ncol=2,
     prop={'size': 25, 'weight': 'bold'}
 )
-# Remove the frame of the legend
+# 移除边框
 legend.get_frame().set_linewidth(0.0)
 
-# Add a black border around the legend patches
+# 加空白
 for patch in legend.get_patches():
     patch.set_edgecolor('black')
     patch.set_linewidth(4)

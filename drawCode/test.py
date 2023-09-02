@@ -1,25 +1,46 @@
-import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.patches import Ellipse
 
-# 自定义的上升函数
-def custom_rising_function(x):
-    return x ** 2  # 这里以平方函数作为示例
+# Example data
+x = [1.8, 2.1, 2.4, 2.83]  # X-coordinates of the four positions
+y = [2.5, 3, 2.6, 3.2]  # Y-coordinates of the four positions
+features = ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']  # Features of the four positions
+colors = ['orange', 'lime', 'violet', 'deepskyblue']  # Colors for each feature
+out_colors = ['navajowhite', 'lightgreen', 'plum', 'skyblue']  # Colors for each feature
+ellipse_width = [1, 1.2, 1.5, 2]
+ellipse_height = [0.7, 1.2, 1.5, 0.9]
+ellipse_angle = [30, 90, 120, 50]
+sizes = [100, 100, 100, 100]  # Sizes for each feature
+markers = ['o', 's', '^', '*']  # Markers for each feature
 
-# 生成随机数据
-def generate_rising_data(rising_func, size):
-    u = np.random.uniform(0, 1, size)  # 生成均匀分布的随机数
-    x = np.sort(rising_func(u))  # 通过逆变换法将均匀分布转换为具有上升趋势的随机数
-    return x
+# Plotting the scatter plot
+fig, ax = plt.subplots(figsize=(8, 6))
 
-# 生成数据并绘制CDF图
-data = generate_rising_data(custom_rising_function, 1000)
-x = np.linspace(min(data), max(data), 100)
-y = np.linspace(0, 1, 100)  # 对于上升函数，y 值范围在 [0, 1] 之间
+# Plot colored circles for the four positions
+for i in range(4):
+    # Plot scatter point with black edge color
+    ax.scatter(x[i], y[i], c=colors[i], s=sizes[i], marker=markers[i], edgecolors='black', linewidths=1, label=features[i])
 
-plt.plot(x, y, label='Custom CDF')
-plt.legend()
-plt.xlabel('RTT(ms)', fontsize=20)
-plt.ylabel('CDF', fontsize=25)
-plt.tick_params(axis='both', labelsize=15)
+    # Create an Ellipse object
+    ellipse = Ellipse((x[i], y[i]), width=ellipse_width[i], height=ellipse_height[i], angle=ellipse_angle[i],
+                      facecolor=out_colors[i], alpha=0.5)  # Set alpha value for transparency
 
+    # Add the ellipse to the plot
+    ax.add_artist(ellipse)
+
+    # # Plot scatter point at the center of the ellipse
+    ax.scatter(x[i], y[i], c=colors[i], s=sizes[i], marker=markers[i], edgecolors='black', linewidths=1)
+
+# Set plot title and labels
+ax.set_title('Scatter Plot with Features')
+ax.set_xlabel('X-axis')
+ax.set_ylabel('Y-axis')
+
+plt.xlim(1, 4)
+plt.ylim(2, 4)
+
+# Add legend
+ax.legend()
+
+# Show the plot
 plt.show()
