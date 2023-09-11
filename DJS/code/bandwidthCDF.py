@@ -46,11 +46,11 @@ with open('../data/bandwidth/5G_bandwidth_new2.csv', 'r') as file:
 
 #NYU
 bandwidth_NYU_data = []
-with open('../data/bandwidth/NYU_total.csv', 'r') as file:
+with open('../data/bandwidth/NYU_dataset.csv', 'r') as file:
     reader = csv.reader(file)
     for row in reader:
-        if len(row) == 0 or row[0] == '':
-            continue  # 跳过空行
+        # if len(row) == 0 or row[0] == '':
+        #     continue  # 跳过空行
         try:
             bandwidth = float(row[0])
             bandwidth_NYU_data.append(bandwidth)
@@ -82,7 +82,7 @@ cdf_NYU = compute_cdf(bandwidth_NYU_data)
 cdf_CTAM = compute_cdf(bandwidth_CTAM_data)
 
 # 填充到k值
-end_x = 25  # 设置end_x值  最大的x值
+end_x = 350  # 设置end_x值  最大的x值
 
 cdf_3g = pad_cdf(cdf_3g, end_x)
 cdf_4g = pad_cdf(cdf_4g, end_x)
@@ -102,7 +102,7 @@ plt.plot(cdf_CTAM[0], cdf_CTAM[1], label='Cellular Traffic', color='mediumpurple
 plt.grid(True, linestyle='--', linewidth=1, alpha=0.7)
 
 plt.xlim([0, end_x])
-plt.ylim([0.75, 1.04])
+plt.ylim([0.7, 1.04])
 
 plt.xlabel('Bandwidth(Mbps)', fontsize=20)
 plt.ylabel('CDF', fontsize=20)
@@ -111,7 +111,7 @@ plt.ylabel('CDF', fontsize=20)
 plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
 
-plt.legend(fontsize=11.5)
+plt.legend(fontsize=18)
 
 # 在绘制折线的同时添加标记
 num_points = 8  # 每条折线上要添加的标记数量
