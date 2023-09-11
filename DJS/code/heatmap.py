@@ -6,8 +6,9 @@ import matplotlib as mpl
 # 字体
 mpl.rcParams['font.family'] = 'Times New Roman'
 # 从CSV文件读取数据
-data = pd.read_csv('../data/combined_data.csv')
-label_name = [ 'RSRP', 'RSRQ', 'SNR', 'CQI','RSSI' , 'DL_bitrate']
+data = pd.read_csv('../data/3G_testData/3G_total.csv')
+# label_name = [ 'RSRP', 'RSRQ', 'SNR', 'CQI','RSSI' , 'DL_bitrate']
+label_name = [ 'time', 'now', 'jing', 'wei','DL_bitrate' , 'time2']
 
 # 计算Pearson相关系数
 corr_matrix = data.corr()
